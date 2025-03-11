@@ -437,6 +437,8 @@ export default function Home() {
                 <div className="flex space-x-4">
                   <a 
                     href="https://www.facebook.com/profile.php?id=61573458404225" 
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-600 hover:text-green-600 transition-colors"
                     aria-label="Facebook"
                   >
@@ -445,7 +447,9 @@ export default function Home() {
                     </svg>
           </a>
           <a
-                    href="https://www.linkedin.com/company/gobaykart/?viewAsMember=true" 
+                    href="https://www.linkedin.com/company/gobaykart/?viewAsMember=true"
+                    target="_blank"
+                    rel="noopener noreferrer" 
                     className="text-gray-600 hover:text-green-600 transition-colors"
                     aria-label="LinkedIn"
                   >
