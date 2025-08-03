@@ -214,17 +214,6 @@ export default function Contact() {
                           ❌ There was an error sending your message. Please try again.
                         </div>
                       )}
-                    {submitStatus === 'success' && (
-                      <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                        ✅ Thank you for your message! We will get back to you soon.
-                      </div>
-                    )}
-                    
-                    {submitStatus === 'error' && (
-                      <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-                        ❌ There was an error sending your message. Please try again.
-                      </div>
-                    )}
                   </form>
                 </div>
               </div>
