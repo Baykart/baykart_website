@@ -25,7 +25,7 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://web-production-f9f0.up.railway.app/api/v1/contact/submissions/', {
+      const response = await fetch('https://web-production-f9f0.up.railway.app/api/v1/contact/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -190,31 +190,30 @@ export default function Contact() {
                       ></textarea>
                     </div>
                     
-                    <button
-                      type="submit" disabled={isSubmitting}
-                      disabled={isSubmitting}
-                      className={`w-full py-3 rounded-md transition-colors ${
-                        isSubmitting 
-                          ? 'bg-gray-400 cursor-not-allowed' 
-                          : 'bg-green-600 hover:bg-green-700'
-                      } text-white`}
-                    >
-                      {isSubmitting ? 'Sending...' : '{isSubmitting ? "Sending..." : "Send Message"}'}
-                    </button>
-                    
-                    {submitStatus === "success" </button></button> (
-                      <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                        ✅ Thank you for your message! We will get back to you soon.
-                      </div>
-                    )}
-                    
-                    {submitStatus === "error" </button></button> (
-                      <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-                        ❌ There was an error sending your message. Please try again.
-                      </div>
-                    )}
-                    
-                    {/* Status Messages */}
+                                          <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={`w-full py-3 rounded-md transition-colors ${
+                          isSubmitting 
+                            ? 'bg-gray-400 cursor-not-allowed' 
+                            : 'bg-green-600 hover:bg-green-700'
+                        } text-white`}
+                      >
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
+                      </button>
+                      
+                                            {/* Status Messages */}
+                      {submitStatus === 'success' && (
+                        <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                          ✅ Thank you for your message! We will get back to you soon.
+                        </div>
+                      )}
+                      
+                      {submitStatus === 'error' && (
+                        <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                          ❌ There was an error sending your message. Please try again.
+                        </div>
+                      )}
                     {submitStatus === 'success' && (
                       <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
                         ✅ Thank you for your message! We will get back to you soon.
