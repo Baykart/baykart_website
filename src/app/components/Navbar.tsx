@@ -12,21 +12,19 @@ export default function Navbar() {
       {/* Logo + Brand */}
       <Link href="/" className="flex items-center gap-2 group">
         <Image src="/images/logo/baykart_logo.png" alt="Baykart Logo" width={38} height={38} className="rounded-full shadow group-hover:scale-105 transition-transform duration-200" />
-        <span className="text-2xl font-extrabold text-[#7A5230] group-hover:text-[#5a3a1e] transition-colors duration-200 tracking-tight">Baykart</span>
+        <span className="text-2xl font-extrabold text-amber-700 group-hover:text-amber-800 transition-colors duration-200 tracking-tight">Baykart</span>
       </Link>
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-8">
-        <Link href="/" className="text-gray-600 text-lg hover:text-[#7A5230] transition-colors">Home</Link>
-        <Link href="/about" className="text-gray-600 text-lg hover:text-[#7A5230] transition-colors">About Us</Link>
-        <Link href="/projects" className="text-gray-600 text-lg hover:text-[#7A5230] transition-colors">Projects</Link>
-        <Link href="/blog" className="text-gray-600 text-lg hover:text-[#7A5230] transition-colors">Blog</Link>
-        <Link href="/contact" className="text-gray-600 text-lg hover:text-[#7A5230] transition-colors">Contact</Link>
+        <Link href="/" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Home</Link>
+        <Link href="/about" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">About Us</Link>
+        <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Contact</Link>
       </div>
       {/* Mobile menu button */}
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-gray-600 hover:text-[#7A5230] focus:outline-none"
+          className="text-gray-600 hover:text-amber-700 focus:outline-none"
         >
           <svg
             className="h-6 w-6"
@@ -49,14 +47,12 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden py-4 z-50">
           <div className="flex flex-col space-y-4 px-6">
-            <Link href="/" className="text-gray-600 text-lg hover:text-[#7A5230]" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <Link href="/about" className="text-gray-600 text-lg hover:text-[#7A5230]" onClick={() => setIsMenuOpen(false)}>About Us</Link>
-            <Link href="/projects" className="text-gray-600 text-lg hover:text-[#7A5230]" onClick={() => setIsMenuOpen(false)}>Projects</Link>
-            <Link href="/blog" className="text-gray-600 text-lg hover:text-[#7A5230]" onClick={() => setIsMenuOpen(false)}>Blog</Link>
-            <Link href="/contact" className="text-gray-600 text-lg hover:text-[#7A5230]" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <Link href="/" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/about" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+            <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
       )}
     </nav>
   );
-} 
+}

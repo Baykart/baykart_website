@@ -10,7 +10,7 @@ export default function AboutUs() {
       
       <div className="pt-24">
         {/* About Header */}
-        <section className="bg-green-600 text-white py-16">
+        <section className="bg-amber-700 text-white py-16">
           <div className="container mx-auto px-6">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">About Baykart</h1>
             <p className="text-xl text-center max-w-3xl mx-auto">
@@ -43,12 +43,12 @@ export default function AboutUs() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   {/* Muhammad Marong */}
                   <div className="bg-white rounded-lg shadow-md overflow-hidden text-center">
-                    <div className="relative h-64 w-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
-                      <div className="text-white text-6xl">👨‍💼</div>
+                    <div className="relative h-64 w-full bg-gradient-to-br from-amber-500 to-orange-700 flex items-center justify-center">
+                      <div className="text-white text-6xl">��‍💼</div>
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-1 text-gray-800">Muhammad Marong</h3>
-                      <p className="text-green-600 mb-4">CEO</p>
+                      <p className="text-amber-600 mb-4">Co-founder & CEO</p>
                       <a 
                         href="https://www.linkedin.com/in/maha-m-17811b165/" 
                         target="_blank" 
@@ -65,12 +65,12 @@ export default function AboutUs() {
 
                   {/* Alagie Faye */}
                   <div className="bg-white rounded-lg shadow-md overflow-hidden text-center">
-                    <div className="relative h-64 w-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
+                    <div className="relative h-64 w-full bg-gradient-to-br from-amber-500 to-orange-700 flex items-center justify-center">
                       <div className="text-white text-6xl">👨‍💼</div>
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-1 text-gray-800">Alagie Faye</h3>
-                      <p className="text-green-600 mb-4">CSO</p>
+                      <p className="text-amber-600 mb-4">Co-founder & CSO</p>
                       <a 
                         href="https://www.linkedin.com/in/alagie-faye-42906a203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
                         target="_blank" 
@@ -87,12 +87,12 @@ export default function AboutUs() {
 
                   {/* Modou Lamin Drammeh */}
                   <div className="bg-white rounded-lg shadow-md overflow-hidden text-center">
-                    <div className="relative h-64 w-full bg-gradient-to-br from-green-500 to-green-700 flex items-center justify-center">
+                    <div className="relative h-64 w-full bg-gradient-to-br from-amber-500 to-orange-700 flex items-center justify-center">
                       <div className="text-white text-6xl">👨‍💼</div>
                     </div>
                     <div className="p-6">
                       <h3 className="text-xl font-bold mb-1 text-gray-800">Modou Lamin Drammeh</h3>
-                      <p className="text-green-600 mb-4">CFO</p>
+                      <p className="text-amber-600 mb-4">Co-founder & CFO</p>
                       <a 
                         href="https://www.linkedin.com/in/modou-lamin-drammeh-793a43128/" 
                         target="_blank" 
@@ -106,22 +106,6 @@ export default function AboutUs() {
                       </a>
                     </div>
                   </div>
-                </div>
-              </div>
-              
-              {/* Mission & Vision */}
-              <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gray-50 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h3>
-                  <p className="text-gray-600">
-                    To connect African farmers and agribusinesses to the world
-                  </p>
-                </div>
-                <div className="bg-gray-50 rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h3>
-                  <p className="text-gray-600">
-                    To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
-                  </p>
                 </div>
               </div>
             </div>
