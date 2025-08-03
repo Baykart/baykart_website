@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #16a34a;
-  --secondary-color: #f97316;
+  --primary-color: #7A5230;
+  --accent-color: #16a34a;
 }
 
 @layer base {
@@ -23,10 +23,10 @@
   }
 
   .btn-primary {
-    @apply bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors;
+    @apply bg-[#16a34a] text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors;
   }
 
   .btn-secondary {
-    @apply bg-orange-500 text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors;
+    @apply bg-[#7A5230] text-white px-6 py-2 rounded-lg hover:bg-[#5a3a1e] transition-colors;
   }
 }

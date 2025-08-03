@@ -16,13 +16,35 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // In a real application, this would send the form data to a backend
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
-    alert('Thanks for your message! We will get back to you soon.');
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('https://web-production-f9f0.up.railway.app/api/v1/contact/submissions/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -169,11 +191,41 @@ export default function Contact() {
                     </div>
                     
                     <button
-                      type="submit"
-                      className="w-full bg-green-600 text-white py-3 rounded-md hover:bg-green-700 transition-colors"
+                      type="submit" disabled={isSubmitting}
+                      disabled={isSubmitting}
+                      className={`w-full py-3 rounded-md transition-colors ${
+                        isSubmitting 
+                          ? 'bg-gray-400 cursor-not-allowed' 
+                          : 'bg-green-600 hover:bg-green-700'
+                      } text-white`}
                     >
-                      Send Message
+                      {isSubmitting ? 'Sending...' : '{isSubmitting ? "Sending..." : "Send Message"}'}
                     </button>
+                    
+                    {submitStatus === "success" </button></button> (
+                      <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                        ✅ Thank you for your message! We will get back to you soon.
+                      </div>
+                    )}
+                    
+                    {submitStatus === "error" </button></button> (
+                      <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                        ❌ There was an error sending your message. Please try again.
+                      </div>
+                    )}
+                    
+                    {/* Status Messages */}
+                    {submitStatus === 'success' && (
+                      <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
+                        ✅ Thank you for your message! We will get back to you soon.
+                      </div>
+                    )}
+                    
+                    {submitStatus === 'error' && (
+                      <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
+                        ❌ There was an error sending your message. Please try again.
+                      </div>
+                    )}
                   </form>
                 </div>
               </div>

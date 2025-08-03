@@ -2,283 +2,164 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useCallback } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ImpactSlideshow from './components/ImpactSlideshow';
+import MissionVision from './components/MissionVision';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
-  const scrollToSection = useCallback((sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false);
-    }
-  }, []);
-
-  const features = [
-    {
-      title: 'Weather Forcast',
-      description: 'Get daily weather updates and predictions',
-      icon: '🌤️',
-    },
-    {
-      title: 'Market View',
-      description: 'Track your crops and prices from near by market with best deals',
-      icon: '📈',
-    },
-    {
-      title: 'Expert Solutions',
-      description: 'Get solutions and guidance of our experts for your problems',
-      icon: '👨‍🌾',
-    },
-    {
-      title: 'Agri Knowledge',
-      description: 'Get updated by latest post and videos for agri knowledge',
-      icon: '📚',
-    },
-    {
-      title: 'Agri Shop',
-      description: 'Order variety of seeds, agri products all under one roof',
-      icon: '🛒',
-    },
-    {
-      title: 'Marketplace',
-      description: 'Trade your crops with verified buyers and sellers',
-      icon: '🏪',
-    },
-  ];
-
-  const testimonials = [
-    {
-      title: "Best Quality Products",
-      text: "Very useful app for rural farmers. Provides best advice from experts, and products at home. Wow. Well done!",
-      author: "Giddeh Jallow",
-      role: "Farmer, NBR",
-      image: "/images/giddeh_jallow.png"
-    },
-    {
-      title: "Hassle free marketing",
-      text: "Thanks to Baykart with that, I was able to sell my commodity at great offers with secure transactions. Very helpful in providing latest market rates also.",
-      author: "Sarjo Baldeh",
-      role: "Farmer, Tujereng",
-      image: "/images/sarjo_baldeh.png"
-    }
-  ];
-
   return (
-    <main className="min-h-screen">
-      {/* Navigation */}
+    <main className="min-h-screen bg-white">
       <Navbar />
-
-      {/* Add padding to account for fixed navbar */}
       <div className="pt-24">
         {/* Hero Section */}
-        <section id="hero" className="relative bg-gradient-to-br from-green-50 to-green-100 py-20 min-h-[600px] overflow-hidden">
-          {/* Background Image */}
-          <div className="absolute inset-0 w-full h-full">
+        <section className="relative w-full h-[500px] flex items-center justify-center bg-gray-200 overflow-hidden">
             <Image
               src="/images/hero.png"
-              alt="Farm illustration"
+            alt="Baykart Hero Background"
               fill
-              className="object-cover"
+            className="object-cover w-full h-full absolute top-0 left-0 z-0 opacity-80"
               priority
             />
-            {/* Overlay for better text readability */}
-            <div className="absolute inset-0 bg-gradient-to-r from-green-50/80 to-transparent"></div>
+          <div className="relative z-10 flex flex-col items-center justify-center text-center w-full px-4">
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-white drop-shadow-lg max-w-3xl">Empowering Gambian Farmers Through Digital Agriculture</h1>
+            <p className="text-lg md:text-2xl text-white mb-8 max-w-2xl mx-auto drop-shadow">Buy, sell, and learn—Baykart connects you to the future of agriculture in The Gambia.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link href="/signup" className="bg-[#7A5230] text-white px-8 py-3 rounded-lg font-semibold shadow hover:bg-[#5a3a1e] transition-colors border-2 border-[#7A5230]">Join the Network</Link>
+              <Link href="/about" className="bg-white text-[#7A5230] px-8 py-3 rounded-lg font-semibold shadow hover:bg-gray-100 transition-colors border-2 border-[#7A5230]">Learn How It Works</Link>
+            </div>
           </div>
-          
-          {/* Content */}
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="md:w-1/2 mb-10 md:mb-0">
-                <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                  Baykart – The Future of Agriculture is Digital
-                </h1>
-                <button className="bg-orange-500 text-white px-8 py-3 rounded-lg hover:bg-orange-600 transition-colors">
-                  Get Started
-                </button>
+        </section>
+
+        {/* Impact/Stats Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            {/* Left: Text */}
+            <div className="flex-1 max-w-xl">
+              <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-[#7A5230]">80% of Africa’s farmers are smallholders. They feed the continent, yet face the greatest challenges.</h2>
+              <p className="text-lg text-gray-700 mb-6">The majority of Africa’s food is grown by smallholder farmers—families working less than 2 hectares of land. Despite their vital role, most lack access to modern tools, markets, and financing. Many live in poverty and face food insecurity, even as they feed their communities.</p>
+              <ul className="list-disc list-inside text-gray-800 space-y-2">
+                <li><span className="font-bold">80%</span> of African farms are smallholdings</li>
+                <li>Up to <span className="font-bold">90%</span> of food in some countries is produced by smallholders</li>
+                <li>Most smallholders live on less than $2 a day</li>
+              </ul>
+            </div>
+            {/* Right: Slideshow */}
+            <div className="flex-1 flex flex-col items-center justify-center gap-6">
+              <ImpactSlideshow />
+            </div>
+          </div>
+        </section>
+
+        {/* Mission & Vision */}
+        <MissionVision />
+
+        {/* How It Works (moved here) */}
+        <section className="py-16 bg-gray-50">
+          <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
+            {/* Left: Text */}
+            <div className="flex-1 max-w-xl">
+              <h2 className="text-2xl md:text-3xl font-extrabold mb-2 text-[#7A5230]">HOW IT WORKS</h2>
+              <h3 className="text-lg md:text-xl font-semibold mb-6 text-gray-800">A Digital Platform for Farming Success</h3>
+              <ol className="list-decimal list-inside space-y-3 text-gray-700 text-base md:text-lg">
+                <li>Register via agent or mobile</li>
+                <li>Get advisory services (weather, planting calendar)</li>
+                <li>Apply for farm inputs or micro-loans</li>
+                <li>Sell produce to verified buyers</li>
+              </ol>
               </div>
-              <div className="md:w-1/2">
-                {/* Remove the second image container since we're using it as background */}
+            {/* Right: Image */}
+            <div className="flex-1 flex justify-center">
+              <div className="rounded-2xl overflow-hidden shadow-lg w-full max-w-md">
+                <Image src="/images/hero.png" alt="How it works" width={500} height={350} className="object-cover w-full h-full" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* Features Section */}
-        <section id="features" className="py-20">
+        {/* Why Baykart / Values */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-900">Why Baykart?</h2>
+            <div className="flex flex-wrap justify-center gap-8 mt-6">
+              <Value icon="💡" label="Innovation" desc="Smart, data-driven solutions for real problems." />
+              <Value icon="🤲" label="Community" desc="We uplift and empower our people." />
+              <Value icon="🤝" label="Integrity" desc="We act with honesty and care for all." />
+              <Value icon="🚀" label="Results" desc="We deliver value for farmers and buyers." />
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials */}
+        <section className="py-12 bg-green-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-4">
-              Some unique features you need
-            </h2>
-            <p className="text-center text-gray-600 mb-12">
-              Our task is to empower farmer with tools that will increase their income and knowledge.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {features.map((feature, index) => (
-                <div
-                  key={index}
-                  className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow"
-                >
-                  <div className="text-3xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>
-              ))}
+            <h2 className="text-2xl md:text-3xl font-bold text-center mb-8 text-green-900">Hear from Our Community</h2>
+            <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              <Testimonial name="Giddeh Jallow" role="Farmer, NBR" text="Very useful app for rural farmers. Provides best advice from experts, and products at home. Well done!" />
+              <Testimonial name="Sarjo Baldeh" role="Farmer, Tujereng" text="Thanks to Baykart, I was able to sell my commodity at great offers with secure transactions. Very helpful in providing latest market rates also." />
             </div>
           </div>
         </section>
 
-        {/* Partners Section */}
-        <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-4">
-              Trusted by Industry Partners
-            </h2>
-            <p className="text-center text-gray-600 mb-12">
-              Our products are supported by industry leading companies
-            </p>
-            <div className="flex flex-wrap justify-center items-center gap-12">
-              <div className="relative w-[200px] h-[100px] transition-transform hover:scale-105">
-                <Image
-                  src="/images/partner1.png"
-                  alt="Partner 1"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className="relative w-[200px] h-[100px] transition-transform hover:scale-105">
-                <Image
-                  src="/images/partner2.png"
-                  alt="Partner 2"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
+        {/* About Us Short */}
+        <section className="py-12 bg-green-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-900">Who We Are</h2>
+            <p className="text-lg text-gray-700 mb-2">Baykart is a digital platform built in The Gambia to empower farmers, vendors, and buyers with technology, knowledge, and opportunity.</p>
+            <Link href="/about" className="text-orange-600 font-semibold hover:underline">Read more about us</Link>
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section id="testimonials" className="py-20">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl font-bold text-center mb-16">
-              Hear it from our farmer&apos;s
-            </h1>
-            <div className="relative max-w-6xl mx-auto">
-              {/* Navigation Arrows */}
-              <button 
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-4xl text-gray-400 hover:text-gray-600"
-                aria-label="Previous testimonial"
-              >
-                ‹
-              </button>
-              <button 
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 text-4xl text-gray-400 hover:text-gray-600"
-                aria-label="Next testimonial"
-              >
-                ›
-              </button>
-
-              {/* Testimonials Grid */}
-              <div className="grid md:grid-cols-2 gap-8">
-                {testimonials.map((testimonial, index) => (
-                  <div
-                    key={index}
-                    className={`p-8 ${index === 0 ? 'bg-green-50/50 rounded-3xl' : 'border border-green-600 rounded-3xl'}`}
-                  >
-                    <h3 className="text-2xl font-bold mb-4">{testimonial.title}</h3>
-                    <p className="text-gray-600 text-lg mb-8">{testimonial.text}</p>
-                    <div className="flex items-center gap-4">
-                      <div className="relative w-16 h-16">
-                        <Image
-                          src={testimonial.image}
-                          alt={testimonial.author}
-                          fill
-                          className="object-cover rounded-full"
-                        />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-lg">{testimonial.author}</p>
-                        <p className="text-gray-500">{testimonial.role}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Navigation Dots */}
-              <div className="flex justify-center items-center gap-2 mt-12">
-                <div className="w-8 h-2 rounded-full bg-green-600"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* App Download Section */}
-        <section id="download" className="bg-green-600 text-white py-20">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between">
-              <div className="md:w-1/2 mb-10 md:mb-0">
-                <h2 className="text-3xl font-bold mb-4">
-                  Handle every aspect of your Farm from your device
-                </h2>
-                <p className="mb-8">
-                  Download the Baykart app to expand your understanding of farming & stay up to date with weather reports, and commodity market prices. Keep in touch with the farming community!
-                </p>
-                <div className="flex gap-4">
-                  <Link href="#" className="hover:opacity-80">
-                    <Image
-                      src="/images/apple.png"
-                      alt="Download on App Store"
-                      width={140}
-                      height={42}
-                    />
-                  </Link>
-                  <Link href="#" className="hover:opacity-80">
-                    <Image
-                      src="/images/google.png"
-                      alt="Get it on Google Play"
-                      width={140}
-                      height={42}
-                    />
-                  </Link>
-                </div>
-              </div>
-              <div className="md:w-1/2">
-                <div className="relative h-[500px] w-full flex justify-center items-center gap-4">
-                  <div className="relative w-[250px] h-[500px]">
-                    <Image
-                      src="/images/app-store.png"
-                      alt="App screenshot 1"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                  <div className="relative w-[250px] h-[500px]">
-                    <Image
-                      src="/images/play-store.png"
-                      alt="App screenshot 2"
-                      fill
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <div id="contact">
-          <Footer />
+        {/* Contact Us CTA */}
+        <section className="py-12 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-green-900">Ready to Join Baykart?</h2>
+            <p className="text-lg text-gray-700 mb-6">Contact us or download the app to get started today.</p>
+            <Link href="/contact" className="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">Contact Us</Link>
         </div>
+        </section>
       </div>
+      <Footer />
     </main>
+  );
+}
+
+function Feature({ icon, title, desc }: { icon: string; title: string; desc: string }) {
+  return (
+    <div className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow hover:shadow-lg transition-shadow">
+      <div className="text-4xl mb-3">{icon}</div>
+      <h3 className="text-lg font-bold mb-1 text-green-900">{title}</h3>
+      <p className="text-gray-600 text-sm">{desc}</p>
+    </div>
+  );
+}
+
+function Value({ icon, label, desc }: { icon: string; label: string; desc: string }) {
+  return (
+    <div className="flex flex-col items-center max-w-xs">
+      <div className="text-3xl mb-2">{icon}</div>
+      <h4 className="font-bold text-green-900 mb-1">{label}</h4>
+      <p className="text-gray-600 text-sm">{desc}</p>
+    </div>
+  );
+}
+
+function Testimonial({ name, role, text }: { name: string; role: string; text: string }) {
+  return (
+    <div className="bg-white p-6 rounded-xl shadow text-left">
+      <p className="text-gray-700 italic mb-4">“{text}”</p>
+      <div className="font-bold text-green-900">{name}</div>
+      <div className="text-sm text-gray-500">{role}</div>
+    </div>
+  );
+}
+
+function Step({ number, title, desc }: { number: number; title: string; desc: string }) {
+  return (
+    <div className="flex flex-col items-center max-w-xs">
+      <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-2xl font-bold text-green-700 mb-2">{number}</div>
+      <h4 className="font-bold text-green-900 mb-1">{title}</h4>
+      <p className="text-gray-600 text-sm text-center">{desc}</p>
+    </div>
   );
 }
