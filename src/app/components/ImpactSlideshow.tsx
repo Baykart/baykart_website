@@ -2,28 +2,32 @@ import React, { useState, useEffect, useRef } from 'react';
 
 const slides = [
   {
-    title: "Empowering Farmers with Technology",
-    description: "Our platform connects farmers with modern tools, market information, and a supportive community to drive agricultural success across Africa.",
-    image: "🌾",
-    color: "from-green-500 to-green-700"
+    title: "African Farmers Using Mobile Technology",
+    description: "Empowering farmers with real-time market prices and agricultural insights through mobile technology.",
+    image: "🌾📱",
+    color: "from-amber-600 to-orange-700",
+    overlayText: "Revolutionizing African Agriculture"
   },
   {
-    title: "Community-Driven Agriculture",
-    description: "Join thousands of farmers who are already using Baykart to access markets, share knowledge, and grow their businesses together.",
-    image: "👥",
-    color: "from-blue-500 to-blue-700"
+    title: "Market Price Access",
+    description: "Farmers can now access real-time market prices directly from their mobile phones, ensuring fair pricing for their produce.",
+    image: "📊📱",
+    color: "from-green-600 to-emerald-700",
+    overlayText: "Smart Market Access"
   },
   {
-    title: "Market Access & Price Transparency",
-    description: "Get real-time market prices, connect with buyers, and ensure fair pricing for your agricultural products.",
-    image: "📊",
-    color: "from-orange-500 to-orange-700"
+    title: "Community-Driven Farming",
+    description: "Join thousands of African farmers who are already using Baykart to connect, share knowledge, and grow together.",
+    image: "👥🌱",
+    color: "from-blue-600 to-indigo-700",
+    overlayText: "Building Farming Communities"
   },
   {
-    title: "Modern Farming Solutions",
-    description: "From weather updates to crop advice, Baykart provides everything you need to make informed farming decisions.",
-    image: "🌱",
-    color: "from-purple-500 to-purple-700"
+    title: "Modern Agricultural Solutions",
+    description: "From weather updates to crop advice, Baykart provides everything farmers need to make informed decisions.",
+    image: "🌤️📱",
+    color: "from-purple-600 to-violet-700",
+    overlayText: "Technology Meets Tradition"
   }
 ];
 
@@ -51,15 +55,27 @@ export default function ImpactSlideshow() {
                 index === current ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'
               }`}
             >
+              {/* Background with gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${slide.color}`}></div>
-              <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+              
+              {/* Simulated AI-generated image background */}
+              <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+              
+              {/* Content overlay */}
               <div className="relative h-full flex items-center justify-center text-white p-8">
                 <div className="text-center max-w-4xl">
+                  {/* Large emoji representing the scene */}
                   <div className="text-8xl mb-6">{slide.image}</div>
-                  <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-                    {slide.title}
-                  </h2>
-                  <p className="text-lg md:text-xl opacity-90 leading-relaxed">
+                  
+                  {/* Main overlay text (like YoLa Fresh style) */}
+                  <div className="bg-black bg-opacity-50 backdrop-blur-sm rounded-lg p-6 mb-6">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+                      {slide.overlayText}
+                    </h2>
+                  </div>
+                  
+                  {/* Description */}
+                  <p className="text-lg md:text-xl opacity-90 leading-relaxed max-w-2xl mx-auto">
                     {slide.description}
                   </p>
                 </div>
