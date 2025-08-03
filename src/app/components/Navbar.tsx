@@ -11,7 +11,9 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-sm py-3 px-6 flex items-center justify-between">
       {/* Logo + Brand */}
       <Link href="/" className="flex items-center gap-2 group">
-        <Image src="/images/logo/baykart_logo.png" alt="Baykart Logo" width={38} height={38} className="rounded-full shadow group-hover:scale-105 transition-transform duration-200" />
+        <div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center shadow group-hover:scale-105 transition-transform duration-200">
+          <span className="text-white font-bold text-lg">B</span>
+        </div>
         <span className="text-2xl font-extrabold text-amber-700 group-hover:text-amber-800 transition-colors duration-200 tracking-tight">Baykart</span>
       </Link>
       {/* Desktop Menu */}

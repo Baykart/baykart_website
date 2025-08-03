@@ -5,7 +5,51 @@ import Link from 'next/link';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ImpactSlideshow from './components/ImpactSlideshow';
-
+        {/* How It Works / Features Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How It Works</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Everything you need to know about farming, markets, and community - all in one app.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Market Prices</h3>
+                <p className="text-gray-600">Get real-time market prices for all agricultural commodities. Know the best time to sell your produce.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Weather Updates</h3>
+                <p className="text-gray-600">Accurate weather forecasts to help you plan your farming activities and protect your crops.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="text-center p-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Community</h3>
+                  <p className="text-gray-600">Connect with fellow farmers, share knowledge, and stay updated with agricultural news and tips.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
@@ -121,20 +165,108 @@ export default function Home() {
               </p>
             </div>
             <ImpactSlideshow />
+        {/* How It Works / Features Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How It Works</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Everything you need to know about farming, markets, and community - all in one app.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Market Prices</h3>
+                <p className="text-gray-600">Get real-time market prices for all agricultural commodities. Know the best time to sell your produce.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Weather Updates</h3>
+                <p className="text-gray-600">Accurate weather forecasts to help you plan your farming activities and protect your crops.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="text-center p-6">
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3">Community</h3>
+                  <p className="text-gray-600">Connect with fellow farmers, share knowledge, and stay updated with agricultural news and tips.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>          </div>
+        </section>
+
+        {/* How It Works / Features Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">How It Works</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Everything you need to know about farming, markets, and community - all in one app.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Market Prices</h3>
+                <p className="text-gray-600">Get real-time market prices for all agricultural commodities. Know the best time to sell your produce.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Weather Updates</h3>
+                <p className="text-gray-600">Accurate weather forecasts to help you plan your farming activities and protect your crops.</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-800 mb-3">Community</h3>
+                <p className="text-gray-600">Connect with fellow farmers, share knowledge, and stay updated with agricultural news and tips.</p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To connect African farmers and agribusinesses to the world
                 </p>
               </div>
-              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
+              <div className="bg-white p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
@@ -156,9 +288,7 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">👨‍💼</span>
-                </div>
+                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">Muhammad Marong</h3>
                 <p className="text-amber-100 mb-4">Co-founder & CEO</p>
                 <a 
@@ -175,9 +305,7 @@ export default function Home() {
               </div>
               
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">👨‍💼</span>
-                </div>
+                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">Alagie Faye</h3>
                 <p className="text-amber-100 mb-4">Co-founder & CSO</p>
                 <a 
@@ -194,9 +322,7 @@ export default function Home() {
               </div>
               
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-4xl">👨‍💼</span>
-                </div>
+                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-4"></div>
                 <h3 className="text-xl font-bold mb-2">Modou Lamin Drammeh</h3>
                 <p className="text-amber-100 mb-4">Co-founder & CFO</p>
                 <a 
@@ -211,28 +337,6 @@ export default function Home() {
                   LinkedIn Profile
                 </a>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Download CTA */}
-        <section className="py-16 bg-gray-900 text-white">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Farming?</h2>
-            <p className="text-xl mb-8 text-gray-300">Download the Baykart app today and join thousands of farmers already using our platform.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-3">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                </svg>
-                Download on App Store
-              </button>
-              <button className="bg-amber-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-amber-700 transition-colors flex items-center justify-center gap-3">
-                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                </svg>
-                GET IT ON Google Play
-              </button>
             </div>
           </div>
         </section>
