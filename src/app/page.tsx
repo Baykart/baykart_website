@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ImpactSlideshow from './components/ImpactSlideshow';
 
 export default function Home() {
   return (
@@ -110,17 +111,30 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Mission & Vision */}
+        {/* Impact Slideshow */}
         <section className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Connect & Join Us</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Discover how Baykart is transforming agriculture across Africa and join our growing community of farmers, buyers, and agribusinesses.
+              </p>
+            </div>
+            <ImpactSlideshow />
+          </div>
+        </section>
+
+        {/* Mission & Vision */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To connect African farmers and agribusinesses to the world
                 </p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg">
+              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
                 <h2 className="text-2xl font-bold text-gray-800 mb-4">Our Vision</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
@@ -130,19 +144,63 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Download CTA */}
+        {/* How to Join */}
         <section className="py-16 bg-green-600 text-white">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">How to Join Baykart</h2>
+              <p className="text-xl text-green-100 max-w-3xl mx-auto">
+                Getting started with Baykart is simple. Follow these steps to connect with our agricultural community.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">📱</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Download the App</h3>
+                <p className="text-green-100">
+                  Get the Baykart app from your app store and create your account in minutes.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">👥</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Connect with Community</h3>
+                <p className="text-green-100">
+                  Join thousands of farmers, buyers, and agribusinesses already using our platform.
+                </p>
+              </div>
+              
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🚀</span>
+                </div>
+                <h3 className="text-xl font-bold mb-3">Start Growing</h3>
+                <p className="text-green-100">
+                  Access markets, get advice, and grow your agricultural business with confidence.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Download CTA */}
+        <section className="py-16 bg-gray-900 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Farming?</h2>
-            <p className="text-xl mb-8 text-green-100">Download the Baykart app today and join thousands of farmers already using our platform.</p>
+            <p className="text-xl mb-8 text-gray-300">Download the Baykart app today and join thousands of farmers already using our platform.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
+              <button className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-3">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
                 Download on App Store
               </button>
-              <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
+              <button className="bg-green-600 text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-green-700 transition-colors flex items-center justify-center gap-3">
                 <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
                 </svg>
