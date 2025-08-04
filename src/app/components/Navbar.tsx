@@ -11,13 +11,14 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-sm py-3 px-6 flex items-center justify-between">
       {/* Logo + Brand */}
       <Link href="/" className="flex items-center gap-3 group">
-        <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow group-hover:scale-105 transition-transform duration-200 overflow-hidden">
+        <div className="w-14 h-14 flex items-center justify-center shadow group-hover:scale-105 transition-transform duration-200">
           <Image 
             src="/images/logo.png" 
             alt="Baykart Logo" 
-            width={40} 
-            height={40}
-            className="object-contain"
+            width={56} 
+            height={56}
+            className="object-contain" priority
+            priority
           />
         </div>
         <span className="text-2xl font-extrabold text-green-600 group-hover:text-green-700 transition-colors duration-200 tracking-tight">Baykart</span>
