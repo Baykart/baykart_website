@@ -16,7 +16,7 @@ export default function Home() {
           <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Left: Text Content */}
             <div className="flex-1 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-extrabold mb-2 leading-tight">
                 Baykart - Making the Farmer's life Simple
               </h1>
               <p className="text-lg md:text-xl mb-8 text-amber-100 leading-relaxed">
@@ -112,9 +112,9 @@ export default function Home() {
         </section>
 
         {/* Impact Slideshow */}
-        <section className="py-0 bg-white">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-6">
+            <div className="text-center mb-2">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Revolutionizing African Agriculture</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 See how Baykart is empowering African farmers with mobile technology and market access.
@@ -125,9 +125,9 @@ export default function Home() {
         </section>
 
         {/* How It Works / Features Section */}
-        <section className="py-0 bg-white">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-6">
+            <div className="text-center mb-2">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">How It Works</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Everything you need to know about farming, markets, and community - all in one app.
@@ -169,7 +169,7 @@ export default function Home() {
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-0 bg-white">
+        <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <div className="bg-white p-8 rounded-lg shadow-lg">
@@ -189,10 +189,10 @@ export default function Home() {
         </section>
 
         {/* Founding Team */}
-        <section className="py-0 bg-amber-700 text-white">
+        <section className="py-8 bg-amber-700 text-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Founding Team</h2>
+            <div className="text-center mb-2">
+              <h2 className="text-3xl md:text-4xl font-bold mb-2">Founding Team</h2>
               <p className="text-xl text-amber-100 max-w-3xl mx-auto">
                 We are a strong team of industry leaders in technology and supply chain - and are always looking for mission-driven, hungry talent to join our journey.
               </p>
