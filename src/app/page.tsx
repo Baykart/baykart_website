@@ -7,7 +7,7 @@ import Footer from './components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="pt-24">
         {/* Hero Section */}
@@ -15,7 +15,7 @@ export default function Home() {
           <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
             {/* Left: Text Content */}
             <div className="flex-1 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-2 leading-tight">
+              <h1 className="text-4xl md:text-6xl font-extrabold mb-1 leading-tight">
                 Baykart - Making the Farmer's life Simple
               </h1>
               <p className="text-lg md:text-xl mb-8 text-green-100 leading-relaxed">
@@ -41,37 +41,37 @@ export default function Home() {
             <div className="flex-1 flex justify-center lg:justify-end">
               <div className="relative">
                 {/* Order Confirmation Screen */}
-                <div className="relative w-64 h-96 bg-white rounded-3xl shadow-2xl transform rotate-6 mb-8">
+                <div className="relative w-64 h-96 bg-gray-50 rounded-3xl shadow-2xl transform rotate-6 mb-8">
                   <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-white rounded-3xl p-4">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-500 mb-2">Thank you!</div>
-                      <p className="text-sm text-gray-600 mb-2">We are pleased to inform you that your order has been received and confirmed.</p>
+                      <div className="text-2xl font-bold text-green-500 mb-1">Thank you!</div>
+                      <p className="text-sm text-gray-600 mb-1">We are pleased to inform you that your order has been received and confirmed.</p>
                       <div className="text-green-500 text-sm underline">Download your invoice Here.</div>
                     </div>
                   </div>
                 </div>
                 
                 {/* Home/Dashboard Screen */}
-                <div className="absolute top-8 right-0 w-64 h-96 bg-white rounded-3xl shadow-2xl transform -rotate-6">
+                <div className="absolute top-8 right-0 w-64 h-96 bg-gray-50 rounded-3xl shadow-2xl transform -rotate-6">
                   <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-white rounded-3xl p-4">
-                    <div className="bg-green-500 text-white p-3 rounded-t-3xl -m-4 mb-2">
+                    <div className="bg-green-500 text-white p-3 rounded-t-3xl -m-4 mb-1">
                       <div className="flex justify-between items-center">
                         <span className="font-semibold">Hello Maha!</span>
                         <div className="flex gap-2">
-                          <div className="w-6 h-6 bg-white bg-opacity-20 rounded-full"></div>
-                          <div className="w-6 h-6 bg-white bg-opacity-20 rounded-full"></div>
+                          <div className="w-6 h-6 bg-gray-50 bg-opacity-20 rounded-full"></div>
+                          <div className="w-6 h-6 bg-gray-50 bg-opacity-20 rounded-full"></div>
                         </div>
                       </div>
                     </div>
                     
                     {/* News Section */}
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 rounded-lg mb-2">
+                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 rounded-lg mb-1">
                       <div className="text-sm font-semibold">Minister Launches New Tractors</div>
                       <div className="text-xs opacity-90">Government launches 50 new tractors for farmers across The Gambia</div>
                     </div>
                     
                     {/* Weather Widget */}
-                    <div className="bg-white p-3 rounded-lg mb-2 shadow-sm">
+                    <div className="bg-gray-50 p-3 rounded-lg mb-1 shadow-sm">
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-xs text-gray-500">Fajara</div>
@@ -111,57 +111,57 @@ export default function Home() {
         </section>
 
         {/* Impact Statistics */}
-        <section className="py-8 bg-white">
+        <section className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">The Challenge We're Solving</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-1">The Challenge We're Solving</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 African farmers face real challenges. Baykart is here to change that.
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="grid flex flex-col space-y-6 gap-8 max-w-6xl mx-auto">
+              <div className="flex items-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                   </svg>
                 </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">60%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Price Loss</h3>
+                <div className="text-4xl font-bold text-green-500 mb-1">60%</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">Price Loss</h3>
                 <p className="text-gray-600">Farmers lose money due to lack of market information</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="flex items-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
                   </svg>
                 </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">80%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">No Weather Info</h3>
+                <div className="text-4xl font-bold text-green-500 mb-1">80%</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">No Weather Info</h3>
                 <p className="text-gray-600">Farmers lack access to accurate weather forecasts</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="flex items-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">70%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Isolated Farmers</h3>
+                <div className="text-4xl font-bold text-green-500 mb-1">70%</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">Isolated Farmers</h3>
                 <p className="text-gray-600">Farmers lack community support and knowledge sharing</p>
               </div>
               
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="flex items-center p-6 bg-white rounded-lg shadow-lg">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
                   <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">90%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">No Digital Access</h3>
+                <div className="text-4xl font-bold text-green-500 mb-1">90%</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-1">No Digital Access</h3>
                 <p className="text-gray-600">Farmers lack access to modern farming technology</p>
               </div>
             </div>
@@ -169,63 +169,80 @@ export default function Home() {
         </section>
 
         {/* How It Works / Features Section */}
-        <section className="py-8 bg-white">
+        <section className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">How It Works</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-1">How It Works</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 A Digital Platform for Farming Success
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">1</span>
+            <div className="max-w-4xl mx-auto">
+              <div className="relative">
+                {/* Timeline line */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-green-200"></div>
+                
+                {/* Step 1 */}
+                <div className="relative flex items-center mb-8">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl z-10">
+                    1
+                  </div>
+                  <div className="ml-8 bg-gray-50 p-6 rounded-lg shadow-lg flex-1">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">Register</h3>
+                    <p className="text-gray-600">Register via agent or mobile</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Register</h3>
-                <p className="text-gray-600">Register via agent or mobile</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">2</span>
+                
+                {/* Step 2 */}
+                <div className="relative flex items-center mb-8">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl z-10 ml-auto">
+                    2
+                  </div>
+                  <div className="mr-8 bg-gray-50 p-6 rounded-lg shadow-lg flex-1 text-right">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">Get Advisory</h3>
+                    <p className="text-gray-600">Get advisory services (weather, planting calendar)</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Get Advisory</h3>
-                <p className="text-gray-600">Get advisory services (weather, planting calendar)</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">3</span>
+                
+                {/* Step 3 */}
+                <div className="relative flex items-center mb-8">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl z-10">
+                    3
+                  </div>
+                  <div className="ml-8 bg-gray-50 p-6 rounded-lg shadow-lg flex-1">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">Apply</h3>
+                    <p className="text-gray-600">Apply for farm inputs or micro-loans</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Apply</h3>
-                <p className="text-gray-600">Apply for farm inputs or micro-loans</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white font-bold text-xl">4</span>
+                
+                {/* Step 4 */}
+                <div className="relative flex items-center">
+                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl z-10 ml-auto">
+                    4
+                  </div>
+                  <div className="mr-8 bg-gray-50 p-6 rounded-lg shadow-lg flex-1 text-right">
+                    <h3 className="text-xl font-bold text-gray-800 mb-1">Sell</h3>
+                    <p className="text-gray-600">Sell produce to verified buyers</p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3">Sell</h3>
-                <p className="text-gray-600">Sell produce to verified buyers</p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Mission & Vision */}
-        <section className="py-8 bg-white">
+        <section className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h2>
+              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
+                <h2 className="text-2xl font-bold text-gray-800 mb-1">Our Mission</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To connect African farmers and agribusinesses to the world
                 </p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h2>
+              <div className="bg-gray-50 p-8 rounded-lg shadow-lg">
+                <h2 className="text-2xl font-bold text-gray-800 mb-1">Our Vision</h2>
                 <p className="text-gray-600 leading-relaxed">
                   To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
                 </p>
@@ -237,8 +254,8 @@ export default function Home() {
         {/* Founding Team */}
         <section className="py-8 bg-green-600 text-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Founding Team</h2>
+            <div className="text-center mb-1">
+              <h2 className="text-3xl md:text-4xl font-bold mb-1">Founding Team</h2>
               <p className="text-xl text-green-100 max-w-3xl mx-auto">
                 We are a strong team of industry leaders in technology and supply chain - and are always looking for mission-driven, hungry talent to join our journey.
               </p>
@@ -246,9 +263,9 @@ export default function Home() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Muhammad Marong</h3>
-                <p className="text-green-100 mb-2">Co-founder & CEO</p>
+                <div className="w-24 h-24 bg-gray-50 bg-opacity-20 rounded-full mx-auto mb-1"></div>
+                <h3 className="text-xl font-bold mb-1">Muhammad Marong</h3>
+                <p className="text-green-100 mb-1">Co-founder & CEO</p>
                 <a 
                   href="https://www.linkedin.com/in/maha-m-17811b165/" 
                   target="_blank" 
@@ -263,9 +280,9 @@ export default function Home() {
               </div>
               
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Alagie Faye</h3>
-                <p className="text-green-100 mb-2">Co-founder & CSO</p>
+                <div className="w-24 h-24 bg-gray-50 bg-opacity-20 rounded-full mx-auto mb-1"></div>
+                <h3 className="text-xl font-bold mb-1">Alagie Faye</h3>
+                <p className="text-green-100 mb-1">Co-founder & CSO</p>
                 <a 
                   href="https://www.linkedin.com/in/alagie-faye-42906a203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
                   target="_blank" 
@@ -280,9 +297,9 @@ export default function Home() {
               </div>
               
               <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Modou Lamin Drammeh</h3>
-                <p className="text-green-100 mb-2">Co-founder & CFO</p>
+                <div className="w-24 h-24 bg-gray-50 bg-opacity-20 rounded-full mx-auto mb-1"></div>
+                <h3 className="text-xl font-bold mb-1">Modou Lamin Drammeh</h3>
+                <p className="text-green-100 mb-1">Co-founder & CFO</p>
                 <a 
                   href="https://www.linkedin.com/in/modou-lamin-drammeh-793a43128/" 
                   target="_blank" 
