@@ -17,7 +17,7 @@ export default function Navbar() {
             alt="Baykart Logo" 
             width={56} 
             height={56}
-            className="object-contain" priority
+            className="object-contain"
             priority
           />
         </div>
