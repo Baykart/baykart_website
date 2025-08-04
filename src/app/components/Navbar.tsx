@@ -11,22 +11,22 @@ export default function Navbar() {
     <nav className="w-full bg-white shadow-sm py-3 px-6 flex items-center justify-between">
       {/* Logo + Brand */}
       <Link href="/" className="flex items-center gap-2 group">
-        <div className="w-10 h-10 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center shadow group-hover:scale-105 transition-transform duration-200">
+        <div className="w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center shadow group-hover:scale-105 transition-transform duration-200">
           <span className="text-white font-bold text-lg">B</span>
         </div>
-        <span className="text-2xl font-extrabold text-amber-700 group-hover:text-amber-800 transition-colors duration-200 tracking-tight">Baykart</span>
+        <span className="text-2xl font-extrabold text-green-600 group-hover:text-green-700 transition-colors duration-200 tracking-tight">Baykart</span>
       </Link>
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-8">
-        <Link href="/" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Home</Link>
-        <Link href="/services" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Services</Link>
-        <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Contact</Link>
+        <Link href="/" className="text-gray-600 text-lg hover:text-green-600 transition-colors">Home</Link>
+        <Link href="/services" className="text-gray-600 text-lg hover:text-green-600 transition-colors">Services</Link>
+        <Link href="/contact" className="text-gray-600 text-lg hover:text-green-600 transition-colors">Contact</Link>
       </div>
       {/* Mobile menu button */}
       <div className="md:hidden">
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="text-gray-600 hover:text-amber-700 focus:outline-none"
+          className="text-gray-600 hover:text-green-600 focus:outline-none"
         >
           <svg
             className="h-6 w-6"
@@ -49,9 +49,9 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden py-4 z-50">
           <div className="flex flex-col space-y-4 px-6">
-            <Link href="/" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <Link href="/services" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Services</Link>
-            <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+            <Link href="/" className="text-gray-600 text-lg hover:text-green-600" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/services" className="text-gray-600 text-lg hover:text-green-600" onClick={() => setIsMenuOpen(false)}>Services</Link>
+            <Link href="/contact" className="text-gray-600 text-lg hover:text-green-600" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
       )}
