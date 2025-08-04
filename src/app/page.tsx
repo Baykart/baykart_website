@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import ImpactSlideshow from './components/ImpactSlideshow';
 
 export default function Home() {
   return (
@@ -111,16 +110,61 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Impact Slideshow */}
+        {/* Impact Statistics */}
         <section className="py-8 bg-white">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-2">
+            <div className="text-center mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Revolutionizing African Agriculture</h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 See how Baykart is empowering African farmers with mobile technology and market access.
               </p>
             </div>
-            <ImpactSlideshow />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+              <div className="text-center p-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <div className="text-4xl font-bold text-amber-600 mb-2">10,000+</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Active Farmers</h3>
+                <p className="text-gray-600">Farmers using Baykart across The Gambia</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div className="text-4xl font-bold text-amber-600 mb-2">50,000+</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Market Transactions</h3>
+                <p className="text-gray-600">Successful trades completed through our platform</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                </div>
+                <div className="text-4xl font-bold text-amber-600 mb-2">100,000+</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Weather Alerts</h3>
+                <p className="text-gray-600">Weather forecasts sent to help farmers plan</p>
+              </div>
+              
+              <div className="text-center p-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-amber-600 to-orange-700 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                  </svg>
+                </div>
+                <div className="text-4xl font-bold text-amber-600 mb-2">25+</div>
+                <h3 className="text-xl font-bold text-gray-800 mb-2">Farming Communities</h3>
+                <p className="text-gray-600">Active groups sharing knowledge and support</p>
+              </div>
+            </div>
           </div>
         </section>
 
