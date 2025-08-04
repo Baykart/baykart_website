@@ -19,7 +19,7 @@ export default function Navbar() {
       {/* Desktop Menu */}
       <div className="hidden md:flex items-center space-x-8">
         <Link href="/" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Home</Link>
-        <Link href="/about" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">About Us</Link>
+        <Link href="/services" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Services</Link>
         <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700 transition-colors">Contact</Link>
       </div>
       {/* Mobile menu button */}
@@ -50,7 +50,7 @@ export default function Navbar() {
         <div className="absolute top-full left-0 w-full bg-white shadow-md md:hidden py-4 z-50">
           <div className="flex flex-col space-y-4 px-6">
             <Link href="/" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Home</Link>
-            <Link href="/about" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>About Us</Link>
+            <Link href="/services" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Services</Link>
             <Link href="/contact" className="text-gray-600 text-lg hover:text-amber-700" onClick={() => setIsMenuOpen(false)}>Contact</Link>
           </div>
         </div>
