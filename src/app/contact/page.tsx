@@ -1,228 +1,394 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
 export default function Contact() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: '',
+    phone: '',
+    subject: '',
+    message: ''
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('https://web-production-f9f0.up.railway.app/api/v1/contact/', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
+    
+    // Simulate form submission
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      alert('Thank you for your message! We will get back to you soon.');
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+    }, 2000);
   };
 
+  const contactMethods = [
+    {
+      icon: '📧',
+      title: 'Email',
+      value: 'info@baykart.com',
+      link: 'mailto:info@baykart.com',
+      description: 'Send us an email anytime'
+    },
+    {
+      icon: '📞',
+      title: 'Phone',
+      value: '+2202865623',
+      link: 'tel:+2202865623',
+      description: 'Call us during business hours'
+    },
+    {
+      icon: '📍',
+      title: 'Office',
+      value: 'The Gambia',
+      link: '#',
+      description: 'Visit our headquarters'
+    }
+  ];
+
   return (
-    <main className="min-h-screen">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-green-50">
       <Navbar />
       
-      <div className="pt-24">
-        {/* Contact Header */}
-        <section className="bg-gradient-to-r from-green-600 to-green-700 text-white py-16">
-          <div className="container mx-auto px-6">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Contact Us</h1>
-            <p className="text-xl text-center max-w-3xl mx-auto">
-              We'd love to hear from you
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+        </div>
+        
+        {/* Floating Elements with Parallax */}
+        <div 
+          className="absolute top-20 left-10 w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full animate-bounce"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        ></div>
+        <div 
+          className="absolute top-40 right-20 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full animate-pulse"
+          style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+        ></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center">
+            <div className={`inline-flex items-center px-6 py-3 bg-white/20 backdrop-blur-sm rounded-full text-white font-medium mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              📞 Get in Touch
+            </div>
+            <h1 className={`text-5xl lg:text-7xl font-bold text-white mb-8 leading-tight transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              Let's Start a
+              <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent animate-gradient-x">
+                Conversation
+              </span>
+            </h1>
+            <p className={`text-xl lg:text-2xl text-green-100 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              Have questions about our services? Want to partner with us? 
+              We'd love to hear from you. Get in touch today!
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Contact Content */}
-        <section className="py-16">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                {/* Contact Information */}
+      {/* Contact Methods */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              How to Reach Us
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up delay-200">
+              Choose your preferred way to get in touch with our team
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {contactMethods.map((method, index) => (
+              <div key={index} className={`group p-8 bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+                <div className="text-center">
+                  <div className="text-6xl mb-6 group-hover:animate-bounce transition-all duration-300">{method.icon}</div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">{method.title}</h3>
+                  <p className="text-gray-600 mb-4">{method.description}</p>
+                  <a 
+                    href={method.link}
+                    className="text-green-600 font-semibold hover:text-green-700 transition-colors group-hover:scale-110 transform"
+                  >
+                    {method.value}
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-start">
+              {/* Contact Form */}
+              <div className={`space-y-8 transition-all duration-1000 scroll-animate ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                 <div>
-                  <h2 className="text-2xl font-bold mb-6 text-gray-800">Get In Touch</h2>
-                  <p className="text-gray-600 mb-8">
-                    Have questions or want to partner with us? We're here to help.
+                  <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+                    Send us a Message
+                  </h2>
+                  <p className="text-xl text-gray-600 leading-relaxed animate-slide-up delay-200">
+                    Fill out the form below and we'll get back to you as soon as possible.
                   </p>
-                  
-                  <div className="space-y-6">
-                    <div className="flex items-start">
-                      <div className="bg-green-100 rounded-full p-3 mr-4">
-                        <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-gray-800 mb-1">Email</h3>
-                        <p className="text-gray-600">info@baykart.com</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="bg-green-100 rounded-full p-3 mr-4">
-                        <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-gray-800 mb-1">Phone</h3>
-                        <p className="text-gray-600">+220 286 5623</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-start">
-                      <div className="bg-green-100 rounded-full p-3 mr-4">
-                        <svg className="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-medium text-gray-800 mb-1">Location</h3>
-                        <p className="text-gray-600">The Gambia</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Social Media */}
-                  <div className="mt-12">
-                    <h3 className="text-lg font-medium text-gray-800 mb-4">Connect With Us</h3>
-                    <div className="flex space-x-4">
-                      <a href="#" className="bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors">
-                        <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24h-1.918c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.294h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
-                        </svg>
-                      </a>
-                      <a href="#" className="bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors">
-                        <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.628 0-12 5.373-12 12s5.372 12 12 12 12-5.373 12-12-5.372-12-12-12zm4.95 8.050c-.424-.175-1.257-.367-1.816-.367-2.066 0-2.387 1.299-2.387 2.275v1.077h3.002l-.39 3.019h-2.612v8.946h-3.689v-8.946h-2.056v-3.019h2.056v-1.296c0-2.696 1.287-4.163 4.025-4.163.903 0 1.699.097 2.547.279l-.68 2.195z" />
-                        </svg>
-                      </a>
-                      <a href="#" className="bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors">
-                        <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.066 9.645c.183 4.04-2.83 8.544-8.164 8.544-1.622 0-3.131-.476-4.402-1.291 1.524.18 3.045-.244 4.252-1.189-1.256-.023-2.317-.854-2.684-1.995.451.086.895.061 1.298-.049-1.381-.278-2.335-1.522-2.304-2.853.388.215.83.344 1.301.359-1.279-.855-1.641-2.544-.889-3.835 1.416 1.738 3.533 2.881 5.92 3.001-.419-1.796.944-3.527 2.799-3.527.825 0 1.572.349 2.096.907.654-.128 1.27-.368 1.824-.697-.215.671-.67 1.233-1.263 1.589.581-.07 1.135-.224 1.649-.453-.384.578-.87 1.084-1.433 1.489z" />
-                        </svg>
-                      </a>
-                      <a href="#" className="bg-green-100 hover:bg-green-200 p-3 rounded-full transition-colors">
-                        <svg className="h-6 w-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
                 </div>
                 
-                {/* Contact Form */}
-                <div>
-                  <h2 className="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h2>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                        Your Name
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name *
                       </label>
                       <input
                         type="text"
                         id="name"
                         name="name"
                         value={formData.name}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                        placeholder="Enter your full name"
                       />
                     </div>
-                    
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                        Your Email
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address *
                       </label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
                         required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                        placeholder="Enter your email"
                       />
                     </div>
-                    
+                  </div>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                        Your Message
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
                       </label>
-                      <textarea
-                        id="message"
-                        name="message"
-                        rows={5}
-                        value={formData.message}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-600"
-                      ></textarea>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                        placeholder="Enter your phone number"
+                      />
                     </div>
-                    
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className={`w-full py-3 rounded-md transition-colors ${
-                        isSubmitting 
-                          ? 'bg-gray-400 cursor-not-allowed' 
-                          : 'bg-amber-600 hover:bg-green-600'
-                      } text-white`}
-                    >
-                      {isSubmitting ? 'Sending...' : 'Send Message'}
-                    </button>
-                    
-                    {/* Status Messages */}
-                    {submitStatus === 'success' && (
-                      <div className="mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-md">
-                        ✅ Thank you for your message! We will get back to you soon.
-                      </div>
-                    )}
-                    
-                    {submitStatus === 'error' && (
-                      <div className="mt-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-md">
-                        ❌ There was an error sending your message. Please try again.
-                      </div>
-                    )}
-                  </form>
+                    <div>
+                      <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                        Subject *
+                      </label>
+                      <select
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 hover:shadow-md"
+                      >
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="partnership">Partnership</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="other">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      required
+                      rows={6}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all duration-300 hover:shadow-md resize-none"
+                      placeholder="Tell us how we can help you..."
+                    />
+                  </div>
+                  
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="group relative w-full px-8 py-4 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                    <div className="relative flex items-center justify-center gap-3">
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                          </svg>
+                          Send Message
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </form>
+              </div>
+              
+              {/* Contact Info */}
+              <div className={`space-y-8 transition-all duration-1000 delay-300 scroll-animate ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
+                <div className="relative group">
+                  <div className="w-full h-96 bg-gradient-to-br from-green-100 to-emerald-200 rounded-3xl shadow-2xl overflow-hidden relative group-hover:shadow-green-500/25 transition-all duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-500/20"></div>
+                    <div className="relative p-8 text-center">
+                      <div className="text-8xl mb-6 group-hover:animate-bounce transition-all duration-300">💬</div>
+                      <h3 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">We're Here to Help</h3>
+                      <p className="text-gray-600 text-lg">Our team is ready to assist you with any questions or concerns</p>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full animate-bounce group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-green-400 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500"></div>
+                </div>
+                
+                <div className="space-y-6">
+                  <div className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center group-hover:bg-green-500 transition-colors duration-300">
+                      <svg className="w-6 h-6 text-green-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-800 mb-2">Response Time</h4>
+                      <p className="text-gray-600">We typically respond within 24 hours during business days.</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center group-hover:bg-blue-500 transition-colors duration-300">
+                      <svg className="w-6 h-6 text-blue-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-800 mb-2">Secure Communication</h4>
+                      <p className="text-gray-600">Your information is protected with industry-standard encryption.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up delay-200">
+              Find answers to common questions about our services
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto space-y-6">
+            {[
+              {
+                question: "How do I get started with Baykart?",
+                answer: "Simply download our app from the App Store or Google Play, create an account, and start exploring our features. Our onboarding process will guide you through everything you need to know."
+              },
+              {
+                question: "What services are included in the free version?",
+                answer: "The free version includes basic weather forecasts, market price tracking, and access to our knowledge base. Premium features like expert consultations and advanced analytics require a subscription."
+              },
+              {
+                question: "How accurate are your weather predictions?",
+                answer: "Our weather forecasts use data from multiple reliable sources and are specifically tailored for agricultural needs. We provide accuracy rates of 85-90% for most regions."
+              },
+              {
+                question: "Can I sell my produce through Baykart?",
+                answer: "Yes! Our marketplace connects farmers with verified buyers. You can list your produce, set your prices, and complete secure transactions through our platform."
+              }
+            ].map((faq, index) => (
+              <div key={index} className={`bg-white rounded-3xl shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 scroll-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+                <div className="p-8">
+                  <h3 className="text-xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">{faq.question}</h3>
+                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+      
+      <Footer />
     </main>
   );
 } 

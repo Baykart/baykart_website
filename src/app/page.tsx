@@ -2,321 +2,352 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
 export default function Home() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+  const [typingText, setTypingText] = useState('');
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isTyping, setIsTyping] = useState(true);
+  
+  const words = ['Simple', 'Profitable', 'Connected', 'Empowered'];
+  const heroRef = useRef(null);
+  const statsRef = useRef(null);
+  const featuresRef = useRef(null);
+
+  useEffect(() => {
+    setIsVisible(true);
+    
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Typing animation effect
+  useEffect(() => {
+    if (!isTyping) return;
+    
+    const currentWord = words[currentWordIndex];
+    let charIndex = 0;
+    
+    const typeInterval = setInterval(() => {
+      if (charIndex <= currentWord.length) {
+        setTypingText(currentWord.slice(0, charIndex));
+        charIndex++;
+      } else {
+        clearInterval(typeInterval);
+        setTimeout(() => {
+          setTypingText('');
+          setCurrentWordIndex((prev) => (prev + 1) % words.length);
+        }, 1000);
+      }
+    }, 100);
+
+    return () => clearInterval(typeInterval);
+  }, [currentWordIndex, isTyping]);
+
+  // Intersection Observer for scroll animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-in');
+        }
+      });
+    }, observerOptions);
+
+    const elements = document.querySelectorAll('.scroll-animate');
+    elements.forEach(el => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-green-50 overflow-hidden">
       <Navbar />
-      <div className="pt-24">
-        {/* Hero Section */}
-        <section className="relative w-full min-h-screen flex items-center justify-center bg-gradient-to-br from-green-600 to-green-700 overflow-hidden">
-          <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12">
-            {/* Left: Text Content */}
-            <div className="flex-1 text-white max-w-2xl">
-              <h1 className="text-4xl md:text-6xl font-extrabold mb-2 leading-tight">
-                Baykart - Making the Farmer's life Simple
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-green-100 leading-relaxed">
-                Download the Baykart app to expand your understanding of farming & stay up to date on weather reports, and commodity market prices. Keep in touch with the farming community!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  Download on the App Store
+      
+      {/* Modern Hero Section */}
+      <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700">
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+          </div>
+        </div>
+        
+        {/* Floating Elements with Parallax */}
+        <div 
+          className="absolute top-20 left-10 w-20 h-20 bg-white/10 backdrop-blur-sm rounded-full animate-bounce"
+          style={{ transform: `translateY(${scrollY * 0.1}px)` }}
+        ></div>
+        <div 
+          className="absolute top-40 right-20 w-16 h-16 bg-white/10 backdrop-blur-sm rounded-full animate-pulse"
+          style={{ transform: `translateY(${scrollY * -0.15}px)` }}
+        ></div>
+        <div 
+          className="absolute bottom-40 left-20 w-12 h-12 bg-white/10 backdrop-blur-sm rounded-full animate-bounce"
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+        ></div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className={`text-white space-y-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+              <div className="space-y-4">
+                <div className="inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium animate-fade-in-up">
+                  🌾 Revolutionizing African Agriculture
+                </div>
+                <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+                  Making the
+                  <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent animate-gradient-x">
+                    Farmer's Life
+                  </span>
+                  <span className="block text-green-200 min-h-[4rem]">
+                    {typingText}
+                    <span className="animate-pulse">|</span>
+                  </span>
+                </h1>
+                <p className="text-xl lg:text-2xl text-green-100 leading-relaxed max-w-2xl animate-fade-in-up delay-500">
+                  Download the Baykart app to expand your understanding of farming & stay up to date on weather reports, and commodity market prices.
+                </p>
+              </div>
+              
+              {/* Modern CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-700">
+                <button className="group relative px-8 py-4 bg-white text-green-700 rounded-2xl font-semibold shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 hover:rotate-1">
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                  <div className="relative flex items-center gap-3">
+                    <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                    </svg>
+                    Download on App Store
+                  </div>
                 </button>
-                <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold shadow-lg hover:bg-gray-800 transition-colors flex items-center justify-center gap-3">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                  </svg>
-                  GET IT ON Google Play
+                <button className="group relative px-8 py-4 bg-black/20 backdrop-blur-sm text-white border border-white/30 rounded-2xl font-semibold shadow-2xl hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:-rotate-1">
+                  <div className="relative flex items-center gap-3">
+                    <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    GET IT ON Google Play
+                  </div>
                 </button>
               </div>
             </div>
             
-            {/* Right: App Screenshots */}
-            <div className="flex-1 flex justify-center lg:justify-end">
-              <div className="relative">
-                {/* Order Confirmation Screen */}
-                <div className="relative w-64 h-96 bg-white rounded-3xl shadow-2xl transform rotate-6 mb-8">
-                  <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-white rounded-3xl p-4">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-green-500 mb-2">Thank you!</div>
-                      <p className="text-sm text-gray-600 mb-2">We are pleased to inform you that your order has been received and confirmed.</p>
-                      <div className="text-green-500 text-sm underline">Download your invoice Here.</div>
-                    </div>
-                  </div>
-                </div>
-                
-                {/* Home/Dashboard Screen */}
-                <div className="absolute top-8 right-0 w-64 h-96 bg-white rounded-3xl shadow-2xl transform -rotate-6">
-                  <div className="absolute inset-0 bg-gradient-to-b from-amber-50 to-white rounded-3xl p-4">
-                    <div className="bg-green-500 text-white p-3 rounded-t-3xl -m-4 mb-2">
+            {/* Right: 3D Phone Mockup with Advanced Animations */}
+            <div className={`relative transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+              <div className="relative transform rotate-6 hover:rotate-12 transition-transform duration-500 group">
+                <div className="w-80 h-96 bg-gradient-to-b from-gray-900 to-gray-800 rounded-[3rem] shadow-2xl border-8 border-gray-700 relative overflow-hidden group-hover:shadow-green-500/25 transition-all duration-500">
+                  {/* Phone Screen Content */}
+                  <div className="absolute inset-2 bg-gradient-to-b from-green-50 to-white rounded-[2rem] p-6">
+                    <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-2xl -m-2 mb-4 animate-pulse">
                       <div className="flex justify-between items-center">
-                        <span className="font-semibold">Hello Maha!</span>
-                        <div className="flex gap-2">
-                          <div className="w-6 h-6 bg-white bg-opacity-20 rounded-full"></div>
-                          <div className="w-6 h-6 bg-white bg-opacity-20 rounded-full"></div>
+                        <span className="font-bold">Hello Maha!</span>
+                        <div className="flex gap-1">
+                          <div className="w-4 h-4 bg-white/20 rounded-full animate-pulse"></div>
+                          <div className="w-4 h-4 bg-white/20 rounded-full animate-pulse delay-100"></div>
                         </div>
                       </div>
-                    </div>
-                    
-                    {/* News Section */}
-                    <div className="bg-gradient-to-r from-orange-500 to-red-500 text-white p-3 rounded-lg mb-2">
-                      <div className="text-sm font-semibold">Minister Launches New Tractors</div>
-                      <div className="text-xs opacity-90">Government launches 50 new tractors for farmers across The Gambia</div>
                     </div>
                     
                     {/* Weather Widget */}
-                    <div className="bg-white p-3 rounded-lg mb-2 shadow-sm">
+                    <div className="bg-white/80 backdrop-blur-sm p-3 rounded-xl mb-3 shadow-sm hover:scale-105 transition-transform duration-300">
                       <div className="flex items-center justify-between">
                         <div>
                           <div className="text-xs text-gray-500">Fajara</div>
-                          <div className="text-2xl font-bold">25°C</div>
+                          <div className="text-xl font-bold">25°C</div>
                           <div className="text-xs text-gray-600">Moderate Rain</div>
                         </div>
-                        <div className="text-3xl">🌧️</div>
+                        <div className="text-2xl animate-bounce">🌧️</div>
                       </div>
                     </div>
                     
-                    {/* Market View */}
+                    {/* Market Prices */}
                     <div className="space-y-2">
                       <div className="flex justify-between items-center text-xs">
                         <span className="font-semibold">Market View</span>
-                        <span>→</span>
+                        <span className="animate-pulse">→</span>
                       </div>
                       <div className="space-y-1">
-                        <div className="flex justify-between text-xs">
+                        <div className="flex justify-between text-xs hover:bg-green-50 p-1 rounded transition-colors">
                           <span>Rice</span>
-                          <span className="text-green-600">D25.5/kg ↗</span>
+                          <span className="text-green-600 animate-pulse">D25.5/kg ↗</span>
                         </div>
-                        <div className="flex justify-between text-xs">
+                        <div className="flex justify-between text-xs hover:bg-red-50 p-1 rounded transition-colors">
                           <span>Maize</span>
-                          <span className="text-red-600">D15.75/kg ↘</span>
-                        </div>
-                        <div className="flex justify-between text-xs">
-                          <span>Groundnut</span>
-                          <span>D35/kg</span>
+                          <span className="text-red-600 animate-pulse">D15.75/kg ↘</span>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Impact Statistics */}
-        <section className="py-8 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">The Challenge We're Solving</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                African farmers face real challenges. Baykart is here to change that.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">60%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Price Loss</h3>
-                <p className="text-gray-600">Farmers lose money due to lack of market information</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">80%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">No Weather Info</h3>
-                <p className="text-gray-600">Farmers lack access to accurate weather forecasts</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">70%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">Isolated Farmers</h3>
-                <p className="text-gray-600">Farmers lack community support and knowledge sharing</p>
-              </div>
-              
-              <div className="text-center p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-                <div className="text-4xl font-bold text-green-500 mb-2">90%</div>
-                <h3 className="text-xl font-bold text-gray-800 mb-2">No Digital Access</h3>
-                <p className="text-gray-600">Farmers lack access to modern farming technology</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works / Features Section */}
-        <section className="py-8 bg-gray-50">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2">How It Works</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                A Digital Platform for Farming Success
-              </p>
-            </div>
-            
-            <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                {/* Left: Text Content */}
-                <div className="space-y-6">
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">1</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">Register</h3>
-                      <p className="text-gray-600">Register via agent or mobile</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">2</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">Get Advisory</h3>
-                      <p className="text-gray-600">Get advisory services (weather, planting calendar)</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">3</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">Apply</h3>
-                      <p className="text-gray-600">Apply for farm inputs or micro-loans</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start space-x-4">
-                    <div className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">4</div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800 mb-2">Sell</h3>
-                      <p className="text-gray-600">Sell produce to verified buyers</p>
                     </div>
                   </div>
                 </div>
                 
-                {/* Right: Image */}
-                <div className="relative">
-                  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div className="aspect-video bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
-                      <div className="text-center p-8">
-                        <div className="text-6xl mb-4">🌾📱</div>
-                        <h3 className="text-2xl font-bold text-gray-800 mb-2">Modern Farming</h3>
-                        <p className="text-gray-600">Farmers using technology to improve their yields</p>
-                      </div>
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 w-8 h-8 bg-green-400 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-yellow-400 rounded-full animate-bounce group-hover:scale-150 transition-transform duration-500"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Modern Stats Section with Scroll Animations */}
+      <section ref={statsRef} className="py-20 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              The Challenge We're Solving
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up delay-200">
+              African farmers face real challenges. Baykart is here to change that.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+            {[
+              { stat: '60%', title: 'Price Loss', desc: 'Farmers lose money due to lack of market information', icon: '💰' },
+              { stat: '80%', title: 'No Weather Info', desc: 'Farmers lack access to accurate weather forecasts', icon: '🌤️' },
+              { stat: '70%', title: 'Isolated Farmers', desc: 'Farmers lack community support and knowledge sharing', icon: '👥' },
+              { stat: '90%', title: 'No Digital Access', desc: 'Farmers lack access to modern farming technology', icon: '📱' }
+            ].map((item, index) => (
+              <div key={index} className={`group p-8 bg-gradient-to-br from-white to-gray-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: `${index * 100}ms` }}>
+                <div className="text-center">
+                  <div className="text-4xl mb-4 group-hover:animate-bounce">{item.icon}</div>
+                  <div className="text-4xl font-bold text-green-600 mb-4 group-hover:scale-110 transition-transform animate-count-up">{item.stat}</div>
+                  <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">{item.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Modern How It Works with Staggered Animations */}
+      <section ref={featuresRef} className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              How It Works
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up delay-200">
+              A Digital Platform for Farming Success
+            </p>
+          </div>
+          
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              {/* Left: Steps with Staggered Animations */}
+              <div className="space-y-8">
+                {[
+                  { step: '01', title: 'Register', desc: 'Register via agent or mobile' },
+                  { step: '02', title: 'Get Advisory', desc: 'Get advisory services (weather, planting calendar)' },
+                  { step: '03', title: 'Apply', desc: 'Apply for farm inputs or micro-loans' },
+                  { step: '04', title: 'Sell', desc: 'Sell produce to verified buyers' }
+                ].map((item, index) => (
+                  <div key={index} className={`flex items-start space-x-6 group transition-all duration-500 scroll-animate ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`} style={{ transitionDelay: `${index * 200}ms` }}>
+                    <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-300">
+                      {item.step}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-2xl font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors">{item.title}</h3>
+                      <p className="text-gray-600 text-lg leading-relaxed">{item.desc}</p>
                     </div>
                   </div>
+                ))}
+              </div>
+              
+              {/* Right: 3D Illustration with Hover Effects */}
+              <div className={`relative transition-all duration-1000 delay-500 scroll-animate ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                <div className="relative group">
+                  <div className="w-full h-96 bg-gradient-to-br from-green-100 to-emerald-200 rounded-3xl shadow-2xl overflow-hidden relative group-hover:shadow-green-500/25 transition-all duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-emerald-500/20"></div>
+                    <div className="relative p-8 text-center">
+                      <div className="text-8xl mb-6 group-hover:animate-bounce transition-all duration-300">🌾📱</div>
+                      <h3 className="text-3xl font-bold text-gray-800 mb-4 group-hover:text-green-600 transition-colors">Modern Farming</h3>
+                      <p className="text-gray-600 text-lg">Farmers using technology to improve their yields</p>
+                    </div>
+                  </div>
+                  
+                  {/* Floating Elements */}
+                  <div className="absolute -top-4 -right-4 w-12 h-12 bg-yellow-400 rounded-full animate-bounce group-hover:scale-150 transition-transform duration-500"></div>
+                  <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-green-400 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500"></div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Mission & Vision */}
-        <section className="py-8 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Our Mission</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  To connect African farmers and agribusinesses to the world
-                </p>
-              </div>
-              <div className="bg-white p-8 rounded-lg shadow-lg">
-                <h2 className="text-2xl font-bold text-gray-800 mb-2">Our Vision</h2>
-                <p className="text-gray-600 leading-relaxed">
-                  To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Founding Team */}
-        <section className="py-8 bg-green-600 text-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-2">Founding Team</h2>
-              <p className="text-xl text-green-100 max-w-3xl mx-auto">
-                We are a strong team of industry leaders in technology and supply chain - and are always looking for mission-driven, hungry talent to join our journey.
+      {/* Modern Mission & Vision with Hover Animations */}
+      <section className="py-20 bg-white relative">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div className={`group p-10 bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+              <div className="text-6xl mb-6 group-hover:animate-bounce transition-all duration-300">🎯</div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6 group-hover:text-green-600 transition-colors">Our Mission</h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                To connect African farmers and agribusinesses to the world through innovative technology solutions.
               </p>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-              <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Muhammad Marong</h3>
-                <p className="text-green-100 mb-2">Co-founder & CEO</p>
-                <a 
-                  href="https://www.linkedin.com/in/maha-m-17811b165/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white hover:text-green-200 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                  LinkedIn Profile
-                </a>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Alagie Faye</h3>
-                <p className="text-green-100 mb-2">Co-founder & CSO</p>
-                <a 
-                  href="https://www.linkedin.com/in/alagie-faye-42906a203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white hover:text-green-200 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                  LinkedIn Profile
-                </a>
-              </div>
-              
-              <div className="text-center">
-                <div className="w-24 h-24 bg-white bg-opacity-20 rounded-full mx-auto mb-2"></div>
-                <h3 className="text-xl font-bold mb-2">Modou Lamin Drammeh</h3>
-                <p className="text-green-100 mb-2">Co-founder & CFO</p>
-                <a 
-                  href="https://www.linkedin.com/in/modou-lamin-drammeh-793a43128/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-white hover:text-green-200 transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                  LinkedIn Profile
-                </a>
-              </div>
+            <div className={`group p-10 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 scroll-animate ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '200ms' }}>
+              <div className="text-6xl mb-6 group-hover:animate-bounce transition-all duration-300">🌟</div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-6 group-hover:text-blue-600 transition-colors">Our Vision</h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
+              </p>
             </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-green-600 via-emerald-600 to-teal-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[length:20px_20px]"></div>
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6 animate-slide-up">
+              Ready to Transform Your Farming?
+            </h2>
+            <p className="text-xl text-green-100 max-w-3xl mx-auto mb-8 animate-slide-up delay-200">
+              Join thousands of farmers who are already using Baykart to improve their yields and profits.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up delay-400">
+              <button className="group relative px-8 py-4 bg-white text-green-700 rounded-2xl font-semibold shadow-2xl hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 hover:rotate-1">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
+                <div className="relative flex items-center gap-3">
+                  <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  Download App
+                </div>
+              </button>
+              <button className="group relative px-8 py-4 bg-black/20 backdrop-blur-sm text-white border border-white/30 rounded-2xl font-semibold shadow-2xl hover:bg-white/10 transition-all duration-300 transform hover:scale-105 hover:-rotate-1">
+                <div className="relative flex items-center gap-3">
+                  <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                  </svg>
+                  Learn More
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      
       <Footer />
     </main>
   );
