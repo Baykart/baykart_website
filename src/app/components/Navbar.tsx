@@ -49,7 +49,6 @@ export default function Navbar() {
               { href: '/', label: 'Home' },
               { href: '/about', label: 'About' },
               { href: '/services', label: 'Services' },
-              { href: '/store', label: 'Store' },
               { href: '/contact', label: 'Contact' }
             ].map((item) => (
               <Link 
@@ -108,7 +107,6 @@ export default function Navbar() {
               { href: '/', label: 'Home' },
               { href: '/about', label: 'About' },
               { href: '/services', label: 'Services' },
-              { href: '/store', label: 'Store' },
               { href: '/contact', label: 'Contact' }
             ].map((item) => (
                 <Link 
