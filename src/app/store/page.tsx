@@ -16,6 +16,7 @@ interface Product {
   isSale?: boolean;
   sizes?: string[];
   colors?: string[];
+  mockupType: 'tshirt' | 'cap' | 'hoodie' | 'mug' | 'bottle' | 'tools' | 'apron' | 'gloves';
 }
 
 export default function Store() {
@@ -48,7 +49,8 @@ export default function Store() {
       description: "Premium cotton t-shirt featuring the Baykart logo. Perfect for farmers and agriculture enthusiasts.",
       isSale: true,
       sizes: ["S", "M", "L", "XL"],
-      colors: ["White", "Navy", "Green"]
+      colors: ["White", "Navy", "Green"],
+      mockupType: "tshirt"
     },
     {
       id: 2,
@@ -59,7 +61,8 @@ export default function Store() {
       description: "Comfortable baseball cap with embroidered Baykart logo. Ideal for outdoor farming activities.",
       isNew: true,
       sizes: ["One Size"],
-      colors: ["Navy", "Green", "Khaki"]
+      colors: ["Navy", "Green", "Khaki"],
+      mockupType: "cap"
     },
     {
       id: 3,
@@ -69,7 +72,8 @@ export default function Store() {
       category: "clothing",
       description: "Warm and cozy hoodie perfect for early morning farming sessions. Features Baykart branding.",
       sizes: ["S", "M", "L", "XL", "XXL"],
-      colors: ["Navy", "Green", "Gray"]
+      colors: ["Navy", "Green", "Gray"],
+      mockupType: "hoodie"
     },
     {
       id: 4,
@@ -81,7 +85,8 @@ export default function Store() {
       description: "Complete set of essential farming tools with Baykart branding. Includes trowel, pruners, and gloves.",
       isSale: true,
       sizes: ["Standard"],
-      colors: ["Multi"]
+      colors: ["Multi"],
+      mockupType: "tools"
     },
     {
       id: 5,
@@ -91,7 +96,8 @@ export default function Store() {
       category: "accessories",
       description: "Insulated water bottle perfect for staying hydrated during long farming days.",
       sizes: ["500ml", "1L"],
-      colors: ["Stainless Steel", "Green"]
+      colors: ["Stainless Steel", "Green"],
+      mockupType: "bottle"
     },
     {
       id: 6,
@@ -101,7 +107,8 @@ export default function Store() {
       category: "farming",
       description: "Durable work apron with multiple pockets. Perfect for carrying tools and seeds.",
       sizes: ["One Size"],
-      colors: ["Khaki", "Navy"]
+      colors: ["Khaki", "Navy"],
+      mockupType: "apron"
     },
     {
       id: 7,
@@ -111,7 +118,8 @@ export default function Store() {
       category: "home",
       description: "Ceramic coffee mug featuring the Baykart logo. Start your day with your favorite beverage.",
       sizes: ["Standard"],
-      colors: ["White", "Navy"]
+      colors: ["White", "Navy"],
+      mockupType: "mug"
     },
     {
       id: 8,
@@ -121,7 +129,8 @@ export default function Store() {
       category: "farming",
       description: "Durable work gloves designed for farming activities. Comfortable and protective.",
       sizes: ["S", "M", "L", "XL"],
-      colors: ["Brown", "Green"]
+      colors: ["Brown", "Green"],
+      mockupType: "gloves"
     }
   ];
 
@@ -160,6 +169,208 @@ export default function Store() {
       setCartCount(prev => prev + 1);
       setIsAddingToCart(false);
     }, 1000);
+  };
+
+  const renderProductMockup = (product: Product) => {
+    const baseClasses = "relative flex items-center justify-center overflow-hidden";
+    
+    switch (product.mockupType) {
+      case 'tshirt':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-blue-50 to-green-50`}>
+            {/* T-Shirt Shape */}
+            <div className="relative w-48 h-56 bg-white rounded-t-full border-2 border-gray-200 shadow-lg">
+              {/* T-Shirt Collar */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-8 bg-white border-2 border-gray-200 rounded-t-full"></div>
+              {/* T-Shirt Sleeves */}
+              <div className="absolute top-8 left-0 w-8 h-20 bg-white border-2 border-gray-200 rounded-r-full"></div>
+              <div className="absolute top-8 right-0 w-8 h-20 bg-white border-2 border-gray-200 rounded-l-full"></div>
+              {/* Baykart Logo on T-Shirt */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={60} 
+                  height={60}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'cap':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-green-50 to-blue-50`}>
+            {/* Baseball Cap */}
+            <div className="relative w-48 h-32 bg-blue-600 rounded-t-full shadow-lg">
+              {/* Cap Brim */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-4 bg-blue-600 rounded-full"></div>
+              {/* Cap Crown */}
+                              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-28 bg-blue-600 rounded-t-full"></div>
+              {/* Baykart Logo on Cap */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={40} 
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'hoodie':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-gray-50 to-blue-50`}>
+            {/* Hoodie Shape */}
+            <div className="relative w-48 h-56 bg-gray-200 rounded-t-full border-2 border-gray-300 shadow-lg">
+              {/* Hood */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-12 bg-gray-200 rounded-t-full"></div>
+              {/* Hoodie Sleeves */}
+              <div className="absolute top-8 left-0 w-8 h-20 bg-gray-200 border-2 border-gray-300 rounded-r-full"></div>
+              <div className="absolute top-8 right-0 w-8 h-20 bg-gray-200 border-2 border-gray-300 rounded-l-full"></div>
+              {/* Baykart Logo on Hoodie */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={50} 
+                  height={50}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'mug':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-orange-50 to-red-50`}>
+            {/* Coffee Mug */}
+            <div className="relative w-32 h-40 bg-white border-4 border-gray-300 rounded-lg shadow-lg">
+              {/* Mug Handle */}
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-6 h-16 bg-white border-4 border-gray-300 rounded-r-full"></div>
+              {/* Baykart Logo on Mug */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={40} 
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'bottle':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-blue-50 to-green-50`}>
+            {/* Water Bottle */}
+            <div className="relative w-24 h-48 bg-green-200 rounded-full border-2 border-green-300 shadow-lg">
+              {/* Bottle Cap */}
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-16 h-8 bg-green-300 rounded-t-full"></div>
+              {/* Baykart Logo on Bottle */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={30} 
+                  height={30}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'tools':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-yellow-50 to-orange-50`}>
+            {/* Tools Set */}
+            <div className="relative w-48 h-40 bg-yellow-100 border-2 border-yellow-300 rounded-lg shadow-lg p-4">
+              {/* Trowel */}
+              <div className="absolute top-4 left-4 w-8 h-16 bg-gray-600 rounded-t-full"></div>
+              {/* Pruners */}
+              <div className="absolute top-4 right-4 w-12 h-8 bg-red-500 rounded-full"></div>
+              {/* Baykart Logo */}
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={40} 
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'apron':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-yellow-50 to-orange-50`}>
+            {/* Apron */}
+                              <div className="relative w-40 h-48 bg-yellow-200 border-2 border-yellow-300 rounded-lg shadow-lg">
+              {/* Apron Straps */}
+                              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-yellow-300"></div>
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-2 h-8 bg-yellow-300 ml-4"></div>
+              {/* Baykart Logo on Apron */}
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={50} 
+                  height={50}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      case 'gloves':
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-yellow-50 to-green-50`}>
+            {/* Gloves */}
+            <div className="relative w-48 h-32 flex justify-center items-center">
+              {/* Left Glove */}
+                                  <div className="w-16 h-20 bg-yellow-200 border-2 border-yellow-300 rounded-lg transform rotate-12"></div>
+              {/* Right Glove */}
+                              <div className="w-16 h-20 bg-yellow-200 border-2 border-yellow-300 rounded-lg transform -rotate-12 ml-4"></div>
+              {/* Baykart Logo */}
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
+                <Image 
+                  src={product.image} 
+                  alt="Baykart Logo" 
+                  width={30} 
+                  height={30}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        );
+
+      default:
+        return (
+          <div className={`${baseClasses} h-64 bg-gradient-to-br from-green-100 to-blue-100`}>
+            <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-lg">
+              <Image 
+                src={product.image} 
+                alt="Baykart Logo" 
+                width={64} 
+                height={64}
+                className="object-contain"
+              />
+            </div>
+          </div>
+        );
+    }
   };
 
   return (
@@ -235,24 +446,20 @@ export default function Store() {
               className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-105 overflow-hidden animate-fade-in-up"
               style={{ animationDelay: `${index * 100}ms` }}
             >
-              {/* Product Image */}
-              <div className="relative h-64 bg-gradient-to-br from-green-100 to-blue-100 flex items-center justify-center">
-                <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-lg">
-                  <span className="text-4xl">🌾</span>
-                </div>
+              {/* Product Mockup */}
+              {renderProductMockup(product)}
                 
-                {/* Badges */}
-                {product.isNew && (
-                  <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    NEW
-                  </div>
-                )}
-                {product.isSale && (
-                  <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                    SALE
-                  </div>
-                )}
-              </div>
+              {/* Badges */}
+              {product.isNew && (
+                <div className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                  NEW
+                </div>
+              )}
+              {product.isSale && (
+                <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold z-10">
+                  SALE
+                </div>
+              )}
 
               {/* Product Info */}
               <div className="p-6">
