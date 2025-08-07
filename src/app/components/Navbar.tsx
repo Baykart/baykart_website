@@ -49,6 +49,7 @@ export default function Navbar() {
               { href: '/', label: 'Home' },
               { href: '/about', label: 'About' },
               { href: '/services', label: 'Services' },
+              { href: '/store', label: 'Store' },
               { href: '/contact', label: 'Contact' }
             ].map((item) => (
               <Link 
@@ -103,12 +104,13 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 w-full bg-white/95 backdrop-blur-md shadow-xl border-t border-gray-200">
             <div className="flex flex-col space-y-4 p-6">
-              {[
-                { href: '/', label: 'Home' },
-                { href: '/about', label: 'About' },
-                { href: '/services', label: 'Services' },
-                { href: '/contact', label: 'Contact' }
-              ].map((item) => (
+                          {[
+              { href: '/', label: 'Home' },
+              { href: '/about', label: 'About' },
+              { href: '/services', label: 'Services' },
+              { href: '/store', label: 'Store' },
+              { href: '/contact', label: 'Contact' }
+            ].map((item) => (
                 <Link 
                   key={item.href}
                   href={item.href} 
