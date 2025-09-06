@@ -197,9 +197,9 @@ export default function Home() {
                 <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-yellow-400 rounded-full animate-bounce group-hover:scale-150 transition-transform duration-500"></div>
               </div>
             </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Modern Stats Section with Scroll Animations */}
       <section ref={statsRef} className="py-20 bg-white relative">
@@ -227,11 +227,11 @@ export default function Home() {
                   <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors">{item.title}</h3>
                   <p className="text-gray-600 leading-relaxed">{item.desc}</p>
                 </div>
-              </div>
+            </div>
             ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Modern How It Works with Staggered Animations */}
       <section ref={featuresRef} className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
@@ -284,10 +284,10 @@ export default function Home() {
                   <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-green-400 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500"></div>
                 </div>
               </div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* Modern Mission & Vision with Hover Animations */}
       <section className="py-20 bg-white relative">
@@ -305,6 +305,47 @@ export default function Home() {
               <h2 className="text-3xl font-bold text-gray-800 mb-6 group-hover:text-blue-600 transition-colors">Our Vision</h2>
               <p className="text-xl text-gray-600 leading-relaxed">
                 To be a global leader in integrated agrofood solutions across Africa, driving innovation, inclusivity, and economic resilience.
+              </p>
+            </div>
+            </div>
+          </div>
+        </section>
+
+      {/* Video Introduction Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 scroll-animate">
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
+              Watch Our Story
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-slide-up delay-200">
+              Discover how Baykart is transforming African agriculture through technology
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto scroll-animate">
+            <div className="relative group">
+              <div className="relative w-full h-0 pb-[56.25%] bg-gray-900 rounded-3xl shadow-2xl overflow-hidden group-hover:shadow-green-500/25 transition-all duration-500">
+                <iframe
+                  className="absolute top-0 left-0 w-full h-full rounded-3xl"
+                  src="https://www.youtube.com/embed/Gkz3F9A2bWc"
+                  title="Baykart Introduction Video"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-green-400 rounded-full animate-bounce group-hover:scale-150 transition-transform duration-500"></div>
+              <div className="absolute -bottom-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full animate-pulse group-hover:scale-150 transition-transform duration-500"></div>
+            </div>
+            
+            {/* Video Description */}
+            <div className="mt-8 text-center">
+              <p className="text-lg text-gray-600 leading-relaxed">
+                Learn about our mission to empower African farmers with cutting-edge technology, 
+                market access, and agricultural knowledge that drives sustainable growth.
               </p>
             </div>
           </div>
@@ -345,9 +386,9 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </div>
-      </section>
-      
+          </div>
+        </section>
+
       <Footer />
     </main>
   );

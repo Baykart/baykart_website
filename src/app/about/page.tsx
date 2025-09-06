@@ -90,7 +90,7 @@ export default function About() {
                   Our Story
                 </h2>
                 <p className="text-xl text-gray-600 leading-relaxed mb-6 animate-slide-up delay-200">
-                  Founded in 2023, Baykart emerged from a deep understanding of the challenges 
+                  Founded in 2025, Baykart emerged from a deep understanding of the challenges 
                   facing African farmers. We recognized that despite being the backbone of 
                   Africa's economy, farmers often lack access to essential resources and information.
                 </p>
@@ -103,7 +103,7 @@ export default function About() {
               
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl hover:scale-105 transition-transform duration-300 group">
-                  <div className="text-3xl font-bold text-green-600 mb-2 group-hover:animate-bounce">2023</div>
+                  <div className="text-3xl font-bold text-green-600 mb-2 group-hover:animate-bounce">2025</div>
                   <div className="text-gray-600">Founded</div>
                 </div>
                 <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl hover:scale-105 transition-transform duration-300 group">
@@ -206,34 +206,28 @@ export default function About() {
                 name: 'Muhammad Marong',
                 role: 'Co-founder & CEO',
                 bio: 'Technology leader with a passion for agricultural innovation and community development.',
-                linkedin: 'https://www.linkedin.com/in/maha-m-17811b165/',
-                image: '/images/sarjo_baldeh.png'
+                linkedin: 'https://www.linkedin.com/in/maha-m-msc-17811b165/',
+                icon: '👨🏿‍💼'
               },
               {
                 name: 'Alagie Faye',
                 role: 'Co-founder & CSO',
                 bio: 'Strategic thinker focused on creating sustainable agricultural solutions for African farmers.',
                 linkedin: 'https://www.linkedin.com/in/alagie-faye-42906a203?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app',
-                image: '/images/giddeh_jallow.png'
+                icon: '👨🏿‍💼'
               },
               {
                 name: 'Modou Lamin Drammeh',
                 role: 'Co-founder & CFO',
                 bio: 'Financial expert committed to building scalable business models that benefit farmers.',
                 linkedin: 'https://www.linkedin.com/in/modou-lamin-drammeh-793a43128/',
-                image: '/images/sarjo_baldeh.png'
+                icon: '👨🏿‍💼'
               }
             ].map((member, index) => (
               <div key={index} className={`group text-center transition-all duration-500 scroll-animate ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 200}ms` }}>
                 <div className="relative mb-8">
                   <div className="w-48 h-48 mx-auto bg-gradient-to-br from-green-100 to-emerald-200 rounded-full overflow-hidden shadow-lg group-hover:shadow-2xl transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                    <Image
-                      src={member.image}
-                      alt={member.name}
-                      width={192}
-                      height={192}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="w-full h-full flex items-center justify-center text-6xl">{member.icon}</div>
                   </div>
                   <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <svg className="w-6 h-6 text-white group-hover:animate-bounce" fill="currentColor" viewBox="0 0 24 24">

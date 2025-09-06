@@ -66,7 +66,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a 
-                href="#" 
+                href="https://www.instagram.com/gobaykart?igsh=MW13MG1kNTd2NWl4aw==" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-green-400 hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
                 aria-label="Instagram"
               >
@@ -75,7 +77,9 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="#" 
+                href="https://www.tiktok.com/@gobaykart2?_t=ZS-8zRuUXxE9Tz&_r=1&fbclid=PAZnRzaAMpjzJleHRuA2FlbQIxMQABpx8RfrWbEaeNkTerLuib8ualj0eAeSqiD4LuHMRzfKGckx_X3JAWe7YXrY7Q_aem_nqK21fJbXGCOk10MQiOuaw" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:text-green-400 hover:bg-white/20 transition-all duration-300 transform hover:scale-110"
                 aria-label="TikTok"
               >

@@ -165,8 +165,8 @@ export default function Services() {
               to succeed in modern agriculture.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
       {/* Services Grid */}
       <section className="py-20 bg-white">
@@ -216,7 +216,7 @@ export default function Services() {
                 <div>
                   <div className={`inline-flex items-center px-4 py-2 bg-gradient-to-br ${services[activeService].color} text-white rounded-full text-sm font-medium mb-6`}>
                     {services[activeService].icon} {services[activeService].title}
-                  </div>
+                    </div>
                   <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 animate-slide-up">
                     {services[activeService].title}
                   </h2>
@@ -230,14 +230,14 @@ export default function Services() {
                         <div className={`w-8 h-8 bg-gradient-to-br ${services[activeService].color} rounded-full flex items-center justify-center mr-4 group-hover:scale-110 transition-transform`}>
                           <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
+                        </svg>
                         </div>
                         <span className="text-gray-700 font-medium">{feature}</span>
                       </div>
                     ))}
+                    </div>
                   </div>
-                </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button className="group relative px-8 py-4 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105">
                     <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-400 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity"></div>
@@ -252,13 +252,13 @@ export default function Services() {
                     <div className="relative flex items-center gap-3">
                       <svg className="w-6 h-6 group-hover:animate-bounce" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-                      </svg>
+                        </svg>
                       Learn More
                     </div>
                   </button>
-                </div>
-              </div>
-              
+                    </div>
+                  </div>
+
               <div className={`relative transition-all duration-1000 delay-300 scroll-animate ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
                 <div className="relative group">
                   <div className={`w-full h-96 bg-gradient-to-br ${services[activeService].color} rounded-3xl shadow-2xl overflow-hidden relative group-hover:shadow-green-500/25 transition-all duration-500`}>
@@ -312,12 +312,12 @@ export default function Services() {
                   Contact Sales
                 </div>
               </button>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      
-      <Footer />
+        </section>
+
+        <Footer />
     </main>
   );
 }
