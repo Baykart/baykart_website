@@ -86,8 +86,8 @@ export default function Contact() {
     {
       icon: '📞',
       title: 'Phone',
-      value: '+2202865623',
-      link: 'tel:+2202865623',
+      value: '220 2077776',
+      link: 'tel:+2202077776',
       description: 'Call us during business hours'
     },
     {

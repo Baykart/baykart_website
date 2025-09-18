@@ -185,7 +185,7 @@ export default function FAQ() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
-              href="https://wa.me/2202865623" 
+              href="https://wa.me/2202077776" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-105"

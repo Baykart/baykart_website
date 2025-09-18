@@ -65,9 +65,14 @@ export default function Navbar() {
             ))}
             
             {/* CTA Button */}
-            <button className="px-6 py-3 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 hover:bg-green-700">
+            <a 
+              href="https://play.google.com/store/apps/details?id=com.baykart.baykartv2" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105 hover:bg-green-700"
+            >
               Download App
-            </button>
+            </a>
           </div>
 
           {/* Mobile menu button */}
@@ -118,9 +123,14 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
-              <button className="mt-4 px-6 py-3 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105">
+              <a 
+                href="https://play.google.com/store/apps/details?id=com.baykart.baykartv2" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-4 px-6 py-3 bg-green-600 text-white rounded-2xl font-semibold shadow-lg hover:shadow-green-500/25 transition-all duration-300 transform hover:scale-105"
+              >
                 Download App
-              </button>
+              </a>
             </div>
           </div>
         )}

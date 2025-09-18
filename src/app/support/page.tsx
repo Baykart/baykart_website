@@ -106,7 +106,7 @@ export default function Support() {
                 </p>
                 <div className="flex items-center justify-between">
                   <a 
-                    href="https://wa.me/2202865623" 
+                    href="https://wa.me/2202077776" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-green-600 text-white px-6 py-3 rounded-xl hover:bg-green-700 transition-all duration-300 hover:scale-105 flex items-center gap-2"
@@ -250,7 +250,7 @@ export default function Support() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
-              href="https://wa.me/2202865623" 
+              href="https://wa.me/2202077776" 
               target="_blank" 
               rel="noopener noreferrer"
               className="bg-white text-green-600 font-bold py-4 px-8 rounded-xl hover:bg-gray-100 transition-colors duration-300 hover:scale-105"

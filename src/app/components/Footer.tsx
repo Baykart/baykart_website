@@ -208,10 +208,10 @@ export default function Footer() {
                   </svg>
                 </div>
                 <a 
-                  href="tel:+2202865623" 
+                  href="tel:+2202077776" 
                   className="hover:text-green-400 transition-colors duration-300 group-hover:translate-x-1 transform"
                 >
-                  +2202865623
+                  220 2077776
                 </a>
               </li>
             </ul>
